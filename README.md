@@ -73,7 +73,7 @@ var req3 = $.getJSON(yetAnotherThing);
 req1
   .then(req2)
   .then(req3)
-  .done(function() {console.log('Everthing is awesome!')});
+  .done(function() {console.log('Everthing is awesome!')})
   .fail(function() {console.log('Oh Noes, there was an error')});
 ```
 
