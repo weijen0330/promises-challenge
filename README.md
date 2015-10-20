@@ -77,4 +77,42 @@ req1
   .fail(function() {console.log('Oh Noes, there was an error')});
 ```
 
-What the above does is construct a promise that execute each request one by one, and if any of them fail along the way, then our console will inform us there was an error. The reason this works is because `req` object returns a new promise object, which we can then call more promise methods on!
+What the above does is construct a promise that execute each request one by
+one, and if any of them fail along the way, then our console will inform us
+there was an error. The reason this works is because `req` object returns a
+new promise object, which we can then call more promise methods on!
+
+```js
+var serialPromise = req1.then(req2).then(req3);
+serialPromise
+  .done(successFunction)
+  .fail(failFunction);
+```
+
+In this case, we aren't doing anything that would actually require each request to be done one by one, but there are certainly situations where you will have things should happen one by one, and this is how you set it up.
+
+### Parallel requests
+
+So the above would actually be bad, because we're wasting the users time with each request. If the requests don't depend on each other, we should *perform them at the same time* and then do something one *all of them are finished*.
+Promises make this incredibly simple of course!
+
+```js
+// Assume the req objects from above are defined the same way as jQuery AJAX calls
+var parallelPromise = $.when(req1, req2, req3)
+
+parallelPromise.
+  .done(function( response1, response2, response3 ){
+  	// Do something with all of the independent responses
+  })
+  .fail(failureFunction);
+```
+
+Here we use jQuery's handle `when()` function for doing paralell requests.
+When takes an arbitrary number of promises, and returns a promise. The promise
+takes a callback function that then has values bound for each result of the
+promises! What's cool is each request will occur at the same time, and we only start doing things once all of them are finished. *Often in web applications, your greatest bottleneck is the network, so efficiently utilizing the network will have huge perfomance impact*.
+
+Note that `when()` is specific to jQuery! Not all promise libraries have handy
+methods for handling parallel promises, in fact some libraries do a much
+better job (by allowing you to deal with promises in arrays). Unfortunately
+the core specification doesn't have such a useful function.
