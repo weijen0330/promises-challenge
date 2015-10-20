@@ -44,7 +44,7 @@ It's the exact same as the above! However, `done()` and `fail()` are useful beca
 
 ```js
 p.done(success1, success2, successN);
-  .fail(failure1, failure2, failureN);
+  .fail(failure1, failure2, failureN)
 ```
 
 In addition, there's `always()`. It, as you might expect, will *always* perform whatever is passed into it, whether the promise succeeds or fails!
