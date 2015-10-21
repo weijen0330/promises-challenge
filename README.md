@@ -66,11 +66,19 @@ actions by chaining promises together.
 Let's say you want do several things one by one. Like making 3 web requests, that all depend on each other.
 
 ```js
-var req1 = $.getJSON(something);
-var req2 = $.getJSON(somethingElse);
-var req3 = $.getJSON(yetAnotherThing);
+var req1 = function() {
+  return $.getJSON(something);
+}
 
-req1
+var req2 = function() {
+  return $.getJSON(somethingElse);
+}
+
+var req3 = function() {
+  return $.getJSON(yetAnotherThing);
+}
+
+req1()
   .then(req2)
   .then(req3)
   .done(function() {console.log('Everthing is awesome!')})
