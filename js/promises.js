@@ -11,5 +11,12 @@ $(document).ready(function() {
     - Use http://openweathermap.org/current
     - The API is really straightforward, but you'll have to pass an additional parameter to getJSON in order to get it working!
       - Take a look at jQuery's getJSON() API to see what that extra parameter is! http://api.jquery.com/jquery.getjson/
+  
+  Part 2: Show the difference between parallel and serial promises
+
+  - Below I've implemented a couple of promises that just use timeouts, and return numbers
+  - When the user clicks the serial button: each of the promises will execute one by one, and you will return the result in #slow-result
+  - When the user clicks the parallel button: each of the promises will execute at the same time, and you will return the result in #fast-result
+  - This is to show the immense importance of network optimization!
    */
 });
