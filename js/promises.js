@@ -20,19 +20,29 @@ $(document).ready(function() {
   - This is to show the immense importance of network optimization!
   */
 
+  // The stuff below is for part 2
 
-  function promiseFactory(delay) {
+  // Creates a promise that will take delay ms before resolving with the given value
+  // Don't worry about how this works, but if you want you're curious feel free to ask!
+  function promiseFactory(delay, val) {
     function f() {
       var d = $.Deferred();
 
-      setTimeout(delay, function() {
-        d.resolve();
-      })
+      setTimeout(function() {
+        d.resolve(val);
+      }, delay);
 
       return d.promise();
     }
 
     return f;
   }
+
+  var quick = promiseFactory(500, 5);
+  // quick(); executes the promise
+  var medium = promiseFactory(1000, 2);
+  var slow = promiseFactory(2000, 30)
+
+  // $.when(...) {}
 
 });
