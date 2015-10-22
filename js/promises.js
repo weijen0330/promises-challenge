@@ -18,5 +18,21 @@ $(document).ready(function() {
   - When the user clicks the serial button: each of the promises will execute one by one, and you will return the result in #slow-result
   - When the user clicks the parallel button: each of the promises will execute at the same time, and you will return the result in #fast-result
   - This is to show the immense importance of network optimization!
-   */
+  */
+
+
+  function promiseFactory(delay) {
+    function f() {
+      var d = $.Deferred();
+
+      setTimeout(delay, function() {
+        d.resolve();
+      })
+
+      return d.promise();
+    }
+
+    return f;
+  }
+
 });
