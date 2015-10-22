@@ -21,6 +21,25 @@
         <h2>Weather</h2>
         <p>Who know what the weather's like? We haven't tried to get it yet!</p>
         <button class="btn btn-primary btn-lg" id="fetch-weather">weather</button>
+        <!-- Add HTML to make weather look nice -->
+      </div>
+      <div class="col-md-6">
+        <h2>Parallel vs Serial</h2>
+        <p>
+          Clicking the buttons, and it will return the sum of all the values of the promises! (It should be 37)
+        </p>
+        <p>
+          Parallel should only take as long as the longest promise.
+        </p>
+        <p>
+          Serial should take as long as the sum of the time for each promise
+        </p>
+        <button class="btn btn-lg btn-primary" id="parallel-promise">parallel</button>
+        <button class="btn btn-lg btn-primary" id="serial-promise">serial</button>
+        <button class="btn btn-lg btn-warning" id="reset">reset</button>
+        <h3>
+          Result: <span id="result"></span>
+        </h3>
       </div>
     </div>
   </div>

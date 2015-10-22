@@ -21,6 +21,11 @@ header h1 {
 	color: #fff;
 	font-size: 350%;
 }
+
 header .subtext {
 	color: #ffcdd2;
+}
+
+.btn {
+  font-variant: small-caps;
 }
