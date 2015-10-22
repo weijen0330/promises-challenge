@@ -18,9 +18,16 @@ $(document).ready(function() {
   - When the user clicks the serial button: each of the promises will execute one by one, and you will return the result in #slow-result
   - When the user clicks the parallel button: each of the promises will execute at the same time, and you will return the result in #fast-result
   - This is to show the immense importance of network optimization!
+  
+  Part 3: Modify the promise factory to create promises that can FAIL
+  
+  - The promise factory currently only returns promises that resolve
+  - Use the deferred.fail() method to instead make it fail (https://api.jquery.com/deferred.fail/)
+  - Now update you're code to handle dealing with these errors!
+  - Congrats, you can now model asynchronous events entirely in your code :)
   */
 
-  // The stuff below is for part 2
+  // The stuff below is for part 2 and 3
 
   // Creates a promise that will take delay ms before resolving with the given value
   // Don't worry about how this works, but if you want you're curious feel free to ask!
